@@ -24,9 +24,9 @@ CORE_NAME=$(CORE_PRODUCT_NAME)
 LIB_NAME=libcore
 
 ifeq ($(CHANNEL),prod)
-	CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/v$(core.version)
+	CORE_URL=https://gh.llkk.cc/https://github.com/hiddify/hiddify-next-core/releases/download/v$(core.version)
 else
-	CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/draft
+	CORE_URL=https://gh.llkk.cc/https://github.com/hiddify/hiddify-next-core/releases/download/draft
 endif
 
 ifeq ($(CHANNEL),prod)
@@ -155,7 +155,7 @@ android-aab-release:
 	ls -R build/app/outputs
 
 windows-release:
-	flutter_distributor package --flutter-build-args=verbose --platform windows --targets exe,msix $(DISTRIBUTOR_ARGS)
+	flutter_distributor package --channel=prod --flutter-build-args=verbose --platform windows --targets exe,msix $(DISTRIBUTOR_ARGS)
 
 linux-release: 
 	flutter_distributor package --flutter-build-args=verbose --platform linux --targets deb,rpm,appimage $(DISTRIBUTOR_ARGS)
@@ -175,7 +175,7 @@ android-aab-libs: android-libs
 
 windows-libs:
 	$(MKDIR) $(DESKTOP_OUT) || echo Folder already exists. Skipping...
-	curl -L $(CORE_URL)/$(CORE_NAME)-windows-amd64.tar.gz | tar xz -C $(DESKTOP_OUT)$(SEP)
+	#curl --ssl-no-revoke -L $(CORE_URL)/$(CORE_NAME)-windows-amd64.tar.gz  | tar xz -C $(DESKTOP_OUT)$(SEP)
 	ls $(DESKTOP_OUT) || dir $(DESKTOP_OUT)$(SEP)
 	
 
@@ -229,5 +229,5 @@ ios-temp-prepare:
 	flutter build ios-framework
 	cd ios
 	pod install
-	
+
 

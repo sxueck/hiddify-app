@@ -30,7 +30,7 @@ class App extends HookConsumerWidget with PresLogger {
     final router = ref.watch(routerProvider);
     final locale = ref.watch(localePreferencesProvider);
     final themeMode = ref.watch(themePreferencesProvider);
-    final theme = AppTheme(themeMode, locale.preferredFontFamily);
+    final theme = AppTheme(themeMode);
 
     final upgrader = ref.watch(upgraderProvider);
 

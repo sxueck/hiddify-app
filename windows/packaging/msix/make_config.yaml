@@ -8,7 +8,7 @@ languages: en-us, zh-cn, zh-tw, tr-tr,fa-ir,ru-ru,pt-br,es-es
 protocol_activation: hiddify
 execution_alias: hiddify
 certificate_path: windows\sign.pfx
-certificate_password:
+certificate_password: 
 publisher: CN=8CB43675-F44B-4AA5-9372-E8727781BDC4
 install_certificate: "false"
 enable_at_startup: "true"

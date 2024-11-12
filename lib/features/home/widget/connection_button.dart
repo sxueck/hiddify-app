@@ -80,17 +80,13 @@ class ConnectionButton extends HookConsumerWidget {
       },
       buttonColor: switch (connectionStatus) {
         AsyncData(value: Connected()) when requiresReconnect == true => Colors.teal,
-        AsyncData(value: Connected()) when delay <= 0 || delay >= 65000 => Color.fromARGB(255, 185, 176, 103),
+        AsyncData(value: Connected()) when delay <= 0 || delay >= 65000 => const Color.fromARGB(255, 185, 176, 103),
         AsyncData(value: Connected()) => buttonTheme.connectedColor!,
         AsyncData(value: _) => buttonTheme.idleColor!,
         _ => Colors.red,
       },
       image: switch (connectionStatus) {
         AsyncData(value: Connected()) when requiresReconnect == true => Assets.images.disconnectNorouz,
-        AsyncData(value: Connected()) => Assets.images.connectNorouz,
-        AsyncData(value: _) => Assets.images.disconnectNorouz,
-        _ => Assets.images.disconnectNorouz,
-        AsyncData(value: Disconnected()) || AsyncError() => Assets.images.disconnectNorouz,
         AsyncData(value: Connected()) => Assets.images.connectNorouz,
         _ => Assets.images.disconnectNorouz,
       },
